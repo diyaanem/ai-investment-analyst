@@ -140,30 +140,46 @@ if st.button("Ask AI"):
 
 st.header("📑 Generate Investment Memo")
 
-if st.button("Generate Report"):
+# if st.button("Generate Report"):
 
+#     if not company_name:
+#         st.warning("Enter company name.")
+#     else:
+
+#         with st.spinner("Generating report..."):
+#             generate_report(company_name)
+
+#         output_file = f"reports/output/{company_name.replace(' ', '_')}_memo.docx"
+
+#         if os.path.exists(output_file):
+
+#             with open(output_file, "rb") as f:
+
+#                 st.download_button(
+#                     label="⬇️ Download Report",
+#                     data=f,
+#                     file_name=os.path.basename(output_file),
+#                     mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+#                 )
+
+#             st.success("Report ready!")
+
+if st.button("Generate Report"):
     if not company_name:
         st.warning("Enter company name.")
     else:
-
         with st.spinner("Generating report..."):
-            generate_report(company_name)
+            output_file = generate_report(company_name)  # Returns temp file path
 
-        output_file = f"reports/output/{company_name.replace(' ', '_')}_memo.docx"
+        with open(output_file, "rb") as f:
+            st.download_button(
+                label="⬇️ Download Report",
+                data=f,
+                file_name=f"{company_name.replace(' ','_')}_memo.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
 
-        if os.path.exists(output_file):
-
-            with open(output_file, "rb") as f:
-
-                st.download_button(
-                    label="⬇️ Download Report",
-                    data=f,
-                    file_name=os.path.basename(output_file),
-                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                )
-
-            st.success("Report ready!")
-
+        st.success("Report ready!")
 
 # -------------------------------
 # Footer
