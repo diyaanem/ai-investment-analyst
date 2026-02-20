@@ -2,12 +2,18 @@
 
 import streamlit as st
 import os
+import openai
 import shutil
 
 from rag.generator import generate_answer
 from reports.generator import generate_report
 from rag.index_manager import reset_index
 from ingestion.processor import ingest_document
+
+# -------------------------------
+# Set OpenAI Key
+# -------------------------------
+openai.api_key = st.secrets["OPEN_AI_KEY"]  # 🔥 Fix here
 
 # -------------------------------
 # App Config
@@ -169,4 +175,4 @@ if st.button("Generate Report"):
 # -------------------------------
 
 st.markdown("---")
-st.caption("AI Investment Analyst • RAG Powered • Day 7 Build")
+st.caption("AI Investment Analyst • RAG Powered by OpenAI • Built with Streamlit")
