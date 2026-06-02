@@ -19,14 +19,15 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("📊 AI Investment Analyst Dashboard")
+st.title("📈 FinSight AI")
+st.caption("RAG-Based Financial Research Assistant")
 
 
 # -------------------------------
 # Sidebar
 # -------------------------------
 
-st.sidebar.header("Upload Documents")
+st.sidebar.header("📂 Document Workspace")
 
 pdf_file = st.sidebar.file_uploader(
     "Upload Financial PDF",
@@ -115,7 +116,7 @@ if csv_file:
 # Q&A Section
 # -------------------------------
 
-st.header("💬 Ask Financial Questions")
+st.header("💬 Research Assistant")
 
 query = st.text_input(
     "Enter your question",
